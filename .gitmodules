@@ -1,0 +1,3 @@
+[submodule "extension/ExplaAI"]
+    path = extension/ExplaAI
+    url = git@github.com:progmanj-sys/ExplaAI.git
