@@ -9,28 +9,68 @@ const elements = {
   input: document.getElementById("question")
 };
 
-// 2. Функція виклику AI (День 3: Integration)
-async function fetchAIExplanation(text) {
+// 2. Функція виклику Gemini AI через Cloudflare Worker
+async function fetchAIExplanation(text, level = "student") {
   if (!text) return;
 
+  // Візуальний зворотний зв'язок
   elements.result.innerHTML = '<span class="loading">Аналізую текст...</span>';
 
   try {
-    // Тут буде ваш реальний API endpoint
-    const response = await fetch("https://explaai-server.yourname.workers.dev", {
+    const response = await fetch("https://still-morning-2049.shyulia17.workers.dev", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: text, level: "student" })
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        text: text,
+        level: level
+      })
     });
-    const data = await response.json();
-    elements.result.innerText = data.result;
+
+    // Отримуємо відповідь як текст (це надійніше для дебагу)
+    const responseText = await response.text();
+
+    // Перевірка статусів (404, 500 тощо)
+    if (!response.ok) {
+      console.error("Помилка сервера:", responseText);
+      throw new Error(`Сервер відповів помилкою ${response.status}`);
+    }
+
+    // Безпечний парсинг JSON
+    let data;
+    try {
+      data = JSON.parse(responseText);
+    } catch (parseError) {
+      console.error("Некоректний JSON від сервера:", responseText);
+      throw new Error("Сервер надіслав текст замість JSON.");
+    }
+
+    // Вивід результату
+    if (data && data.result) {
+      elements.result.innerText = data.result;
+    } else {
+      throw new Error(data.error || "Відповідь ШІ порожня або має невірний формат.");
+    }
+
   } catch (error) {
-    elements.result.innerText = "Помилка: не вдалося з'єднатися з AI.";
+    // Вивід помилки для користувача
+    elements.result.innerText = `⚠️ ${error.message}`;
     console.error("AI Fetch Error:", error);
   }
 }
 
-// 3. Логіка Меню та Тем (День 4-5: UI/UX)
+// 3. Обробка форми
+elements.form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const query = elements.input.value.trim();
+  if (query) {
+    await fetchAIExplanation(query);
+    elements.input.value = "";
+  }
+});
+
+// 4. Меню та Теми
 const toggleMenu = () => elements.dropdown.classList.toggle("hidden");
 
 elements.menuBtn.addEventListener("click", (e) => {
@@ -38,28 +78,30 @@ elements.menuBtn.addEventListener("click", (e) => {
   toggleMenu();
 });
 
-// Закриття меню при кліку поза ним
-document.addEventListener("click", () => elements.dropdown.classList.add("hidden"));
+document.addEventListener("click", (e) => {
+  if (elements.dropdown && !elements.menuBtn.contains(e.target) && !elements.dropdown.contains(e.target)) {
+    elements.dropdown.classList.add("hidden");
+  }
+});
 
-// Перемикач теми
 elements.themeBtn.addEventListener("click", () => {
   const isDark = document.body.classList.toggle("dark-mode");
   chrome.storage.local.set({ theme: isDark ? 'dark' : 'light' });
 });
 
-// Закриття панелі
 elements.closeBtn.addEventListener("click", () => window.close());
 
-// 4. Синхронізація зі сховищем (State Management)
-// Завантаження при відкритті
+// 5. Синхронізація та ініціалізація
 chrome.storage.local.get(["selectedText", "theme"], (data) => {
   if (data.theme === 'dark') document.body.classList.add("dark-mode");
-  if (data.selectedText) fetchAIExplanation(data.selectedText);
+  if (data.selectedText) {
+    fetchAIExplanation(data.selectedText);
+    chrome.storage.local.remove("selectedText");
+  }
 });
 
-// Реакція на нове виділення тексту (День 2: Scaffolding)
 chrome.storage.onChanged.addListener((changes) => {
-  if (changes.selectedText) {
+  if (changes.selectedText && changes.selectedText.newValue) {
     fetchAIExplanation(changes.selectedText.newValue);
   }
 });

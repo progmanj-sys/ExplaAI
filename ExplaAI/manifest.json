@@ -8,17 +8,15 @@
     "storage",
     "sidePanel"
   ],
+  "host_permissions": [
+    "https://still-morning-2049.shyulia17.workers.dev/*"
+  ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "Відкрити ExplaAI",
-    "default_icon": {
-      "16": "images/logo_light.svg",
-      "48": "images/logo_light.svg",
-      "128": "images/logo_light.svg"
-    }
+    "default_title": "Відкрити ExplaAI"
   },
   "side_panel": {
     "default_path": "sidepanel.html"
@@ -27,15 +25,5 @@
     "16": "images/logo_light.svg",
     "48": "images/logo_light.svg",
     "128": "images/logo_light.svg"
-  },
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "fonts/*.woff2",
-        "images/*.svg",
-        "explaai.css"
-      ],
-      "matches": ["<all_urls>"]
-    }
-  ]
+  }
 }
