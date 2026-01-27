@@ -210,3 +210,19 @@ body {
 .send-btn:hover {
   transform: scale(1.1);
 }
+
+/* Force white dropdown in dark mode */
+body.dark-mode .dropdown {
+  background: #FFFFFF;     /* біле тло меню */
+  color: #000000;          /* чорний текст */
+  border-color: #E2E8F0;   /* світла рамка */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* м'яка тінь */
+}
+
+body.dark-mode .dropdown button {
+  color: #000000;          /* чорний текст в кнопках меню */
+}
+
+body.dark-mode .dropdown button:hover {
+  background-color: #F1F5F9;  /* світлий hover */
+}
