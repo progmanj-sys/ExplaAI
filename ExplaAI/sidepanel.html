@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./explaai.css" />
+    <title>ExplaAI Side Panel</title>
+  </head>
+
+  <body>
+    <div class="expla-popup"> <header class="header">
+        <div class="logo-section">
+          <div class="logo-icon">E</div>
+          <p class="brand-name">ExplaAI</p>
+        </div>
+
+        <div class="menu-container">
+          <button type="button" id="menu-btn" aria-label="Відкрити меню" class="icon-btn">
+            <img src="./images/menu_light.svg" alt="menu" />
+          </button>
+
+          <div id="dropdown-menu" class="dropdown hidden">
+            <button type="button" id="toggle-theme">Змінити режим</button>
+            <hr>
+            <button type="button" id="close-panel">Закрити</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <section
+          aria-live="polite"
+          aria-atomic="true"
+          aria-label="Панель результату спрощення">
+          <div class="explanation-card">
+            <h3>Пояснення тексту</h3>
+            <div id="result" class="placeholder-text">
+              Виділіть текст на сторінці та оберіть "Пояснити", щоб почати.
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <form id="form">
+          <div class="input-wrapper">
+            <input
+              id="question"
+              name="question"
+              type="text"
+              placeholder="Введіть запитання"
+              autocomplete="off" />
+            <button type="submit" class="send-btn" aria-label="Надіслати">
+              <img src="./images/send.svg" alt="send" />
+            </button>
+          </div>
+        </form>
+      </footer>
+    </div>
+
+    <script src="./sidepanel.js"></script>
+  </body>
+</html>

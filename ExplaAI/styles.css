@@ -1,0 +1,140 @@
+@font-face {
+  font-family: "Almarai";
+  src: url("./fonts/Almarai-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Almarai";
+  src: url("./fonts/Almarai-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --background-color: #ffffff;
+  --text-black: #000000;
+  --simple-text: #0f172a;
+  --input-text: #878787;
+  --border-color: #e2e8f0;
+  --field-color: #f1f5f9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.title {
+  color: var(--text-black);
+  font-family: "Almarai", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.hero-title {
+  color: var(--text-black);
+  font-family: "Almarai", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.explanation {
+  color: var(--simple-text);
+  font-family: "Almarai", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.input-field {
+  color: var(--input-text);
+  font-family: "Almarai", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.container {
+  width: 400px;
+  height: 100vh;
+  padding: 20px;
+  background: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .title {
+  margin-right: auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 15px;
+}
+
+section {
+  background: var(--field-color);
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.explanation {
+  background: var(--);
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  gap: 159px;
+
+  background: var(--field-color);
+  padding-top: 21px;
+  padding-bottom: 21px;
+  padding-left: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.input-field {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: "Almarai", sans-serif;
+  font-size: 16px;
+}
+
+form button {
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: #e0e7ff;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
