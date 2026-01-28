@@ -1,0 +1,7 @@
+# CODEOWNERS: автоматичний запит рев'ю для ключових директорій
+# Замініть на реальних власників/команди
+# Формат: <pattern> @github-username-or-team
+*       @I7Sacto @your-org/frontend
+src/    @your-org/frontend
+docs/   @your-org/docs
+.github/ @your-org/devops
