@@ -1,7 +1,7 @@
 # CODEOWNERS
 *               @progmanj-sys
 
-docs/           @progmanj-sys
+ExplaAI/         @progmanj-sys
 .github/        @progmanj-sys
 webpack*.js     @progmanj-sys
 manifest.json   @progmanj-sys
