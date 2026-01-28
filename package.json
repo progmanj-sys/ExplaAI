@@ -1,0 +1,16 @@
+{
+  "name": "explaai-extension",
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "eslint 'src/**/*.{js,ts}'",
+    "test": "vitest",
+    "build": "webpack --config webpack.prod.js",
+    "build:dev": "webpack --config webpack.dev.js",
+    "zip": "node scripts/zip-dist.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "webpack": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}
