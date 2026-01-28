@@ -1,5 +1,3 @@
-// prod webpack для Chrome Extension / Manifest V3 (универсальний JS/TS + React)
-// Поміняйте entry/шляхи під вашу структуру, якщо потрібно
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -8,11 +6,10 @@ module.exports = {
   mode: 'production',
   target: 'web',
   entry: {
-    // Оновіть ці шляхи під реальні файли вашого проекту
-    popup: path.resolve(__dirname, 'ExplaAI/ExplaAI/popup.html'),
-    sidepanel: path.resolve(__dirname, 'ExplaAI/ExplaAI/index.html'),
-    background: path.resolve(__dirname, 'ExplaAI/ExplaAI/background.js'),
-    content: path.resolve(__dirname, 'ExplaAI/ExplaAI/styles.css'),
+    background: path.resolve(__dirname, 'ExplaAI/background.js'),
+    content: path.resolve(__dirname, 'ExplaAI/worker.js'), // або content.js, якщо він так називається
+    popup: path.resolve(__dirname, 'ExplaAI/popup.js'),
+    sidepanel: path.resolve(__dirname, 'ExplaAI/sidepanel.js'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -50,21 +47,21 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'popup.html',
-      template: path.resolve(__dirname, 'src/popup/popup.html'),
+      template: path.resolve(__dirname, 'ExplaAI/popup.html'),
       chunks: ['popup'],
       inject: 'body',
     }),
     new HtmlWebpackPlugin({
       filename: 'sidepanel.html',
-      template: path.resolve(__dirname, 'src/sidepanel/sidepanel.html'),
+      template: path.resolve(__dirname, 'ExplaAI/sidepanel.html'),
       chunks: ['sidepanel'],
       inject: 'body',
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'manifest.json', to: '.' },
-        { from: 'public/icons', to: 'icons', noErrorOnMissing: true },
-        { from: 'public/_locales', to: '_locales', noErrorOnMissing: true },
+        { from: 'ExplaAI/manifest.json', to: '.' },
+        { from: 'ExplaAI/images', to: 'images', noErrorOnMissing: true },
+        { from: 'ExplaAI/fonts', to: 'fonts', noErrorOnMissing: true },
       ],
     }),
   ],
