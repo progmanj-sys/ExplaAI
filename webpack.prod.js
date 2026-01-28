@@ -1,3 +1,4 @@
+// webpack.prod.js — продакшн конфіг для Chrome Extension (Manifest V3)
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -7,7 +8,7 @@ module.exports = {
   target: 'web',
   entry: {
     background: path.resolve(__dirname, 'ExplaAI/background.js'),
-    content: path.resolve(__dirname, 'ExplaAI/worker.js'), // або content.js, якщо він так називається
+    content: path.resolve(__dirname, 'ExplaAI/worker.js'), // якщо є окремий content.js — заміни тут
     popup: path.resolve(__dirname, 'ExplaAI/popup.js'),
     sidepanel: path.resolve(__dirname, 'ExplaAI/sidepanel.js'),
   },
@@ -52,18 +53,4 @@ module.exports = {
       inject: 'body',
     }),
     new HtmlWebpackPlugin({
-      filename: 'sidepanel.html',
-      template: path.resolve(__dirname, 'ExplaAI/sidepanel.html'),
-      chunks: ['sidepanel'],
-      inject: 'body',
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: 'ExplaAI/manifest.json', to: '.' },
-        { from: 'ExplaAI/images', to: 'images', noErrorOnMissing: true },
-        { from: 'ExplaAI/fonts', to: 'fonts', noErrorOnMissing: true },
-      ],
-    }),
-  ],
-  optimization: { splitChunks: { chunks: 'all' } },
-};
+      filename: '
