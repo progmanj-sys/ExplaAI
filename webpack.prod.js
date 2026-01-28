@@ -9,10 +9,10 @@ module.exports = {
   target: 'web',
   entry: {
     // Оновіть ці шляхи під реальні файли вашого проекту
-    popup: path.resolve(__dirname, 'src/popup/index.tsx'),
-    sidepanel: path.resolve(__dirname, 'src/sidepanel/index.tsx'),
-    background: path.resolve(__dirname, 'src/background.ts'),
-    content: path.resolve(__dirname, 'src/contentScript.ts'),
+    popup: path.resolve(__dirname, 'ExplaAI/ExplaAI/popup.html'),
+    sidepanel: path.resolve(__dirname, 'ExplaAI/ExplaAI/index.html'),
+    background: path.resolve(__dirname, 'ExplaAI/ExplaAI/background.js'),
+    content: path.resolve(__dirname, 'ExplaAI/ExplaAI/styles.css'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
