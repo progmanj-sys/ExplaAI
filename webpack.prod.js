@@ -8,7 +8,7 @@ module.exports = {
   target: 'web',
   entry: {
     background: path.resolve(__dirname, 'background.js'),
-    content: path.resolve(__dirname, 'worker.js'), // або content.js, якщо він так називається
+    content: path.resolve(__dirname, 'worker.js'), // твій content-скрипт
     popup: path.resolve(__dirname, 'popup.js'),
     sidepanel: path.resolve(__dirname, 'sidepanel.js'),
   },
@@ -63,6 +63,8 @@ module.exports = {
         { from: 'manifest.json', to: '.' },
         { from: 'images', to: 'images', noErrorOnMissing: true },
         { from: 'fonts', to: 'fonts', noErrorOnMissing: true },
+        { from: 'explaai.css', to: '.' }, // якщо треба окремо скопіювати стилі
+        { from: 'index.html', to: '.' },  // якщо index.html використовується
       ],
     }),
   ],
