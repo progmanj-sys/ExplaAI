@@ -1,0 +1,47 @@
+# Release: на push в main збирає артефакт і створює GitHub Release (опціонально)
+name: Release
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-build:
+    name: Build & Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Create ZIP
+        run: |
+          mkdir -p release
+          cd dist
+          zip -r ../release/explaai-${GITHUB_SHA::7}.zip .
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}-${{ github.sha::7 }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload asset to release
+        uses: actions/upload-release-asset@v2
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: release/explaai-${GITHUB_SHA::7}.zip
+          asset_name: explaai-${GITHUB_SHA::7}.zip
+          asset_content_type: application/zip
+      # Optional: deploy to Chrome Web Store (requires CHROME_WEBSTORE_TOKEN)
+      # - name: Publish to Chrome Web Store
+      #   uses: rlespinasse/chrome-webstore-upload@v1
+      #   with:
+      #     extension-id: ${{ secrets.CHROME_EXTENSION_ID }}
+      #     client-id: ${{ secrets.CHROME_CLIENT_ID }}
+      #     client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+      #     refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+      #     zip: release/explaai-${GITHUB_SHA::7}.zip
