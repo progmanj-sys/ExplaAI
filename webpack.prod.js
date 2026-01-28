@@ -7,10 +7,10 @@ module.exports = {
   mode: 'production',
   target: 'web',
   entry: {
-    background: path.resolve(__dirname, 'ExplaAI/background.js'),
-    content: path.resolve(__dirname, 'ExplaAI/worker.js'), // якщо є окремий content.js — заміни тут
-    popup: path.resolve(__dirname, 'ExplaAI/popup.js'),
-    sidepanel: path.resolve(__dirname, 'ExplaAI/sidepanel.js'),
+    background: path.resolve(__dirname, 'background.js'),
+    content: path.resolve(__dirname, 'worker.js'), // або content.js, якщо він так називається
+    popup: path.resolve(__dirname, 'popup.js'),
+    sidepanel: path.resolve(__dirname, 'sidepanel.js'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -48,9 +48,23 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'popup.html',
-      template: path.resolve(__dirname, 'ExplaAI/popup.html'),
+      template: path.resolve(__dirname, 'popup.html'),
       chunks: ['popup'],
       inject: 'body',
     }),
     new HtmlWebpackPlugin({
-      filename: '
+      filename: 'sidepanel.html',
+      template: path.resolve(__dirname, 'sidepanel.html'),
+      chunks: ['sidepanel'],
+      inject: 'body',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'manifest.json', to: '.' },
+        { from: 'images', to: 'images', noErrorOnMissing: true },
+        { from: 'fonts', to: 'fonts', noErrorOnMissing: true },
+      ],
+    }),
+  ],
+  optimization: { splitChunks: { chunks: 'all' } },
+};
