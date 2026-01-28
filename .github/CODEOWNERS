@@ -1,16 +1,3 @@
-# CODEOWNERS
-*               @progmanj-sys
-
-ExplaAI/         @progmanj-sys
-.github/        @progmanj-sys
-webpack*.js     @progmanj-sys
-manifest.json   @progmanj-sys
-background.js   @progmanj-sys
-worker.js       @progmanj-sys
-popup.js        @progmanj-sys
-sidepanel.js    @progmanj-sys
-popup.html      @progmanj-sys
-sidepanel.html  @progmanj-sys
-index.html      @progmanj-sys
-styles.css      @progmanj-sys
-explaai.css     @progmanj-sys
+*       @progmanj-sys @ExplaAI/frontend
+docs/   @ExplaAI/docs
+.github/ @ExplaAI/devops
