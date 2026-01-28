@@ -2,7 +2,7 @@
   "name": "explaai-extension",
   "version": "0.1.0",
   "scripts": {
-    "lint": "eslint 'src/**/*.{js,ts}'",
+    "lint": "eslint 'ExplaAI/**/*.{js,ts}'",
     "test": "vitest",
     "build": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.dev.js",
