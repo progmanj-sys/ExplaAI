@@ -63,8 +63,8 @@ module.exports = {
         { from: 'manifest.json', to: '.' },
         { from: 'images', to: 'images', noErrorOnMissing: true },
         { from: 'fonts', to: 'fonts', noErrorOnMissing: true },
-        { from: 'explaai.css', to: '.' }, // якщо треба окремо скопіювати стилі
-        { from: 'index.html', to: '.' },  // якщо index.html використовується
+        { from: 'explaai.css', to: '.' },
+        { from: 'index.html', to: '.' },
       ],
     }),
   ],
