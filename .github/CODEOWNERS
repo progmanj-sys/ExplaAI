@@ -1,28 +1,16 @@
-# CODEOWNERS: автоматичний запит рев'ю для ключових директорій
+# CODEOWNERS
+*               @progmanj-sys
 
-# За замовчуванням усі зміни рев’ює @progmanj-sys та фронтенд команда
-*               @progmanj-sys @ExplaAI-frontend
-
-# Документація (якщо буде)
-docs/           @ExplaAI-docs
-
-# Конфігурації CI/CD та GitHub Actions
-.github/        @ExplaAI-devops
-
-# Конфігураційні файли збірки
-webpack*.js     @ExplaAI-frontend
-
-# Маніфест Chrome Extension
-manifest.json   @ExplaAI-frontend
-
-# Основні файли розширення
-background.js   @ExplaAI-frontend
-worker.js       @ExplaAI-frontend
-popup.js        @ExplaAI-frontend
-sidepanel.js    @ExplaAI-frontend
-popup.html      @ExplaAI-frontend
-sidepanel.html  @ExplaAI-frontend
-index.html      @ExplaAI-frontend
-styles.css      @ExplaAI-frontend
-explaai.css     @ExplaAI-frontend
-
+docs/           @progmanj-sys
+.github/        @progmanj-sys
+webpack*.js     @progmanj-sys
+manifest.json   @progmanj-sys
+background.js   @progmanj-sys
+worker.js       @progmanj-sys
+popup.js        @progmanj-sys
+sidepanel.js    @progmanj-sys
+popup.html      @progmanj-sys
+sidepanel.html  @progmanj-sys
+index.html      @progmanj-sys
+styles.css      @progmanj-sys
+explaai.css     @progmanj-sys
