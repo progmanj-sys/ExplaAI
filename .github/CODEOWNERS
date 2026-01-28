@@ -1,7 +1,28 @@
 # CODEOWNERS: автоматичний запит рев'ю для ключових директорій
-# Замініть на реальних власників/команди
-# Формат: <pattern> @github-username-or-team
-*       @I7Sacto @your-org/frontend
-src/    @your-org/frontend
-docs/   @your-org/docs
-.github/ @your-org/devops
+
+# За замовчуванням усі зміни рев’ює @progmanj-sys та фронтенд команда
+*               @progmanj-sys @ExplaAI-frontend
+
+# Документація (якщо буде)
+docs/           @ExplaAI-docs
+
+# Конфігурації CI/CD та GitHub Actions
+.github/        @ExplaAI-devops
+
+# Конфігураційні файли збірки
+webpack*.js     @ExplaAI-frontend
+
+# Маніфест Chrome Extension
+manifest.json   @ExplaAI-frontend
+
+# Основні файли розширення
+background.js   @ExplaAI-frontend
+worker.js       @ExplaAI-frontend
+popup.js        @ExplaAI-frontend
+sidepanel.js    @ExplaAI-frontend
+popup.html      @ExplaAI-frontend
+sidepanel.html  @ExplaAI-frontend
+index.html      @ExplaAI-frontend
+styles.css      @ExplaAI-frontend
+explaai.css     @ExplaAI-frontend
+
