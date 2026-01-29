@@ -1,3 +1,3 @@
 name = "explaai-worker"
-main = "worker.js"
+main = "ExplaAI/ExplaAI/worker.js"
 compatibility_date = "2024-12-01"
