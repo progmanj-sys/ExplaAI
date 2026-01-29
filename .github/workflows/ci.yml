@@ -20,6 +20,10 @@ jobs:
 
       - name: Install Wrangler
         run: npm install -D wrangler
+        
+      - name: Install dependencies
+        run: npm install
+        working-directory: ExplaAI
 
       - name: Deploy Worker
         run: cd ExplaAI && npx wrangler deploy
