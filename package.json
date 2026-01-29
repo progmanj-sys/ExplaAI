@@ -4,7 +4,8 @@
   "scripts": {
     "lint": "eslint 'ExplaAI/**/*.{js,ts}'",
     "test": "vitest",
-    "build": "webpack --config webpack.prod.js",
+    "build:dev": "webpack --config webpack.prod.js",
+    "build:worker": "webpack --config webpack.worker.js",
     "deploy": "npm run build && wrangler deploy",
     "zip": "node scripts/zip-dist.js"
   },
