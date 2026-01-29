@@ -1,4 +1,4 @@
 name = "explaai-worker"
-main = "dist/worker.js"
+main = "worker.js"
 compatibility_date = "2026-01-29"
 account_id = "658e57b1ae49a8e94699cdea1ead6b04"
