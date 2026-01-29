@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "ExplaAI",
+  "version": "1.0.0",
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "sidePanel",
+    "tts"
+  ],
+
+  "host_permissions": [
+    "https://still-morning-2049.shyulia17.workers.dev/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Відкрити ExplaAI"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "icons": {
+    "16": "images/logo_light.svg",
+    "48": "images/logo_light.svg",
+    "128": "images/logo_light.svg"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/logo_light.svg",
+      "32": "images/logo_light.svg",
+      "48": "images/logo_light.svg"
+    },
+    "default_popup": "popup.html"
+  }
+}

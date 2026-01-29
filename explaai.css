@@ -1,0 +1,300 @@
+.logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+/* 1. ПІДКЛЮЧЕННЯ ЛОКАЛЬНИХ ШРИФТІВ */
+@font-face {
+  font-family: 'Almarai';
+  src: url('./fonts/Almarai-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('./fonts/Almarai-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 2. ЗМІННІ (LIGHT MODE - DEFAULT) */
+:root {
+  --accent-purple: #6366F1;
+  --bg-light: #F1F5F9;
+  --bg-white: #FFFFFF;
+  --text-main: #000000;
+  --text-gray: #978787;
+  --border-color: #E2E8F0;
+  --dropdown-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* 3. ЗМІННІ (DARK MODE) */
+body.dark-mode {
+  --bg-white: #1a1b1e;
+  --bg-light: #25262b;
+  --text-main: #ececec;
+  --text-gray: #909296;
+  --border-color: #373a40;
+  --dropdown-shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* 4. БАЗОВІ СТИЛІ */
+body {
+  margin: 0;
+  font-family: 'Almarai', sans-serif;
+  background-color: var(--bg-white);
+  color: var(--text-main);
+  min-width: 300px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.expla-popup {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* 5. HEADER & LOGO */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  background: var(--accent-purple);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* 6. MENU & DROPDOWN */
+.menu-container {
+  position: relative;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.icon-btn:hover {
+  background: var(--bg-light);
+}
+
+.dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--dropdown-shadow);
+  z-index: 100;
+  min-width: 180px;
+  overflow: hidden;
+}
+
+.menu-label {
+  padding: 12px 16px 4px 16px;
+  font-size: 11px;
+  color: var(--text-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.mode-selector {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 8px;
+}
+
+.mode-btn {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  color: var(--text-main);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.mode-btn:hover {
+  background-color: var(--bg-light);
+}
+
+.mode-btn.active {
+  background-color: var(--accent-purple) !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.dropdown hr {
+  margin: 4px 0;
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+#toggle-theme, #close-panel {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  color: var(--text-main);
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.hidden { display: none; }
+
+/* 7. CONTENT AREA */
+.content-area {
+  flex-grow: 1;
+}
+
+.explanation-card {
+  background: var(--bg-light);
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 120px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#speak-btn {
+  color: var(--text-gray);
+  transition: all 0.2s ease;
+}
+
+#speak-btn:hover {
+  color: var(--accent-purple);
+  background: var(--bg-white);
+}
+
+#speak-btn.speaking {
+  color: var(--accent-purple);
+  animation: pulse-simple 1.5s infinite;
+}
+
+.placeholder-text {
+  color: var(--text-gray);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 8. FOOTER & INPUT */
+.footer {
+  margin-top: 16px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+.input-wrapper input {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.actions-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.action-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Мікрофон запис */
+#mic-btn.recording {
+  background: #ff4d4f !important;
+  animation: pulse-red 1s infinite;
+}
+
+#mic-btn.recording img {
+  filter: brightness(0) invert(1); /* Робимо іконку білою на червоному фоні */
+}
+
+/* АНІМАЦІЇ */
+@keyframes pulse-red {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.4); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 77, 77, 0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse-simple {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}

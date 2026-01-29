@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./explaai.css">
+  <style>
+    body { width: 250px; padding: 16px; }
+    .status-msg { font-size: 14px; color: var(--text-gray); margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+  <img src="logo_light.png" alt="Logo" class="logo">
+  <h1>ExplaAI Generator</h1>
+</div>
+
+  <p class="status-msg">Виділіть будь-який складний текст на сторінці та скористайтеся правою кнопкою миші.</p>
+
+  <button id="open-sidepanel-btn" class="send-btn" style="width: 100%; justify-content: center; border: 1px solid var(--accent-purple); border-radius: 8px; padding: 8px;">
+    Відкрити бічну панель
+  </button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+<input type="text" id="image-prompt" placeholder="Опишіть картинку...">
+<button id="generate-btn">Згенерувати</button>
+
+<div id="loading" style="display:none;">Малюю шедевр... </div>
+<img id="result-image" src="" style="display:none; width:100%; border-radius: 8px; margin-top: 10px;">

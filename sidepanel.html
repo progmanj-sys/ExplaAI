@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./explaai.css" />
+    <title>ExplaAI Side Panel</title>
+  </head>
+
+  <body>
+    <div class="expla-popup">
+      <header class="header">
+        <div class="logo-section">
+          <div class="logo-icon">E</div>
+          <p class="brand-name">ExplaAI</p>
+        </div>
+
+        <div class="menu-container">
+          <button type="button" id="menu-btn" aria-label="Відкрити меню" class="icon-btn">
+            <img src="./images/menu_light.svg" alt="menu" />
+          </button>
+
+          <div id="dropdown-menu" class="dropdown hidden">
+            <div class="mode-selector">
+              <p class="menu-label">Режим пояснення:</p>
+              <button type="button" class="mode-btn active" data-mode="child">Дитина</button>
+              <button type="button" class="mode-btn" data-mode="student">Студент</button>
+              <button type="button" class="mode-btn" data-mode="expert">Експерт</button>
+            </div>
+            <hr>
+            <button type="button" id="toggle-theme">Змінити тему</button>
+            <button type="button" id="close-panel">Закрити</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <section aria-live="polite" aria-atomic="true">
+          <div class="explanation-card">
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+              <h3>Пояснення тексту</h3>
+              <button id="speak-btn" title="Озвучити" class="icon-btn" style="display: none;">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path fill="currentColor" d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.03C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+                </svg>
+              </button>
+            </div>
+            <div id="result" class="placeholder-text">
+              Виділіть текст або поставте запитання голосом.
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <form id="form">
+          <div class="input-wrapper">
+            <input
+              id="question"
+              name="question"
+              type="text"
+              placeholder="Введіть запитання"
+              autocomplete="off" />
+
+            <div class="actions-container">
+              <button type="button" id="mic-btn" class="action-btn" aria-label="Голосовий ввід">
+                <img src="./images/mic.png" alt="mic" />
+              </button>
+
+              <button type="submit" id="send-btn" class="action-btn" aria-label="Надіслати">
+                <img src="./images/send.svg" alt="send" />
+              </button>
+            </div>
+          </div>
+        </form>
+      </footer>
+    </div>
+
+    <script src="./sidepanel.js"></script>
+  </body>
+</html>
